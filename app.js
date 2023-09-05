@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
   // Artist Search Route
 app.get('/artist-search', (req, res) => {
     const artistName = req.query.artistName; // artistName
+    console.log(query)
+
     spotifyApi
       .searchArtists(artistName)
       .then(data => {
@@ -40,6 +42,7 @@ app.get('/artist-search', (req, res) => {
       .catch(err => console.log('The error while searching artists occurred: ', err));
   });
 
+  
   app.get('/artist-albums/:id', (req, res) => {
     const artistId = req.params.id; 
     res.send(`View albums for artist with ID: ${artistId}`);
